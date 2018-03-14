@@ -2,7 +2,7 @@
 
 return [
     "host" => 'localhost',
-    "name" => "mvcframework",
+    "name" => "mvcblog",
     "user" => "root",
     "password" => ""
 ];

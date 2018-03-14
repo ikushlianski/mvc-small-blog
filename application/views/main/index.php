@@ -1,10 +1,35 @@
-<p>This is main page from views/main/index.php file</p>
-<p>Here is the list of all news:</p>
-<?php foreach ($news as $piece) : ?>
-    <h3><?php echo $piece['title']?></h3>
-    <p><?php echo $piece['text']?></p>
-    <hr>
-<?php endforeach; ?>
-
-
-
+<header class="masthead" style="background-image: url('/public/images/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>Ilya Kushlianski</h1>
+                    <span class="subheading">Простой блог на php - oop - mvc</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <?php if (empty($list)): ?>
+                <p>Список постов пуст</p>
+            <?php else: ?>
+                <?php foreach ($list as $val): ?>
+                    <div class="post-preview">
+                        <a href="/post/<?php echo $val['id']; ?>">
+                            <h2 class="post-title"><?php echo htmlspecialchars($val['name'], ENT_QUOTES); ?></h2>
+                            <h5 class="post-subtitle"><?php echo htmlspecialchars($val['description'], ENT_QUOTES); ?></h5>
+                        </a>
+                        <p class="post-meta">Идентфикатор этого поста <?php echo $val['id']; ?></p>
+                    </div>
+                    <hr>
+                <?php endforeach; ?>
+                <div class="clearfix">
+                    <?php echo $pagination; ?>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
